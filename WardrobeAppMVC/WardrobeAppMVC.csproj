@@ -156,42 +156,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Accessory.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bottom.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Outfit.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Season.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sho.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Top.cs">
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WardrobeModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WardrobeModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WardrobeModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WardrobeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WardrobeModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WardrobeModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +163,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\4140-0026A.JPG" />
+    <Content Include="Content\images\642039-657_x.jpg" />
+    <Content Include="Content\images\asics-shoes.jpg" />
+    <Content Include="Content\images\cloumbia-jacket.png" />
+    <Content Include="Content\images\ecco-dress-shoes.jpg" />
+    <Content Include="Content\images\lee-jeans--Clothing-For-Men.jpeg" />
+    <Content Include="Content\images\rbx shirt.jpg" />
+    <Content Include="Content\images\Russel.jpg" />
+    <Content Include="Content\images\timberland-boots.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -214,25 +187,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Models\WardrobeModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WardrobeModel.edmx</DependentUpon>
-      <LastGenOutput>WardrobeModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WardrobeModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WardrobeModel.edmx</DependentUpon>
-      <LastGenOutput>WardrobeModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\WardrobeModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WardrobeModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WardrobeModel.edmx.diagram">
-      <DependentUpon>WardrobeModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -295,7 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
