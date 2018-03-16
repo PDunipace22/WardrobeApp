@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WardrobeAppMVC", "WardrobeAppMVC\WardrobeAppMVC.csproj", "{065880B7-910E-46EF-BE7F-B726995C1CCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{065880B7-910E-46EF-BE7F-B726995C1CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065880B7-910E-46EF-BE7F-B726995C1CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065880B7-910E-46EF-BE7F-B726995C1CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065880B7-910E-46EF-BE7F-B726995C1CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BABE477-FD70-47C4-ACA5-5D3CC354AF7B}
+	EndGlobalSection
+EndGlobal

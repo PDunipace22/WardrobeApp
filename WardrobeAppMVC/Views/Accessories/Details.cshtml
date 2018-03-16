@@ -1,0 +1,58 @@
+﻿@model WardrobeAppMVC.Models.Accessory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Accessory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessoryPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessoryPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessoryColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessoryColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessorySeason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessorySeason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessoryOccasion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessoryOccasion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccessoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
