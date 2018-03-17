@@ -10,107 +10,107 @@ using WardrobeAppMVC.Models;
 
 namespace WardrobeAppMVC.Controllers
 {
-    public class AccessoriesController : Controller
+    public class WardrobeTypesController : Controller
     {
-        private WardrobeDBEntities1 db = new WardrobeDBEntities1();
+        private WardrobeDBEntities2 db = new WardrobeDBEntities2();
 
-        // GET: Accessories
+        // GET: WardrobeTypes
         public ActionResult Index()
         {
-            return View(db.Accessories.ToList());
+            return View(db.WardrobeTypes.ToList());
         }
 
-        // GET: Accessories/Details/5
+        // GET: WardrobeTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accessory accessory = db.Accessories.Find(id);
-            if (accessory == null)
+            WardrobeType wardrobeType = db.WardrobeTypes.Find(id);
+            if (wardrobeType == null)
             {
                 return HttpNotFound();
             }
-            return View(accessory);
+            return View(wardrobeType);
         }
 
-        // GET: Accessories/Create
+        // GET: WardrobeTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Accessories/Create
+        // POST: WardrobeTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccessoryID,AccessoryName,AccessoryPhoto,AccessoryColor,AccessorySeason,AccessoryOccasion")] Accessory accessory)
+        public ActionResult Create([Bind(Include = "TypeID,Description")] WardrobeType wardrobeType)
         {
             if (ModelState.IsValid)
             {
-                db.Accessories.Add(accessory);
+                db.WardrobeTypes.Add(wardrobeType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(accessory);
+            return View(wardrobeType);
         }
 
-        // GET: Accessories/Edit/5
+        // GET: WardrobeTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accessory accessory = db.Accessories.Find(id);
-            if (accessory == null)
+            WardrobeType wardrobeType = db.WardrobeTypes.Find(id);
+            if (wardrobeType == null)
             {
                 return HttpNotFound();
             }
-            return View(accessory);
+            return View(wardrobeType);
         }
 
-        // POST: Accessories/Edit/5
+        // POST: WardrobeTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccessoryID,AccessoryName,AccessoryPhoto,AccessoryColor,AccessorySeason,AccessoryOccasion")] Accessory accessory)
+        public ActionResult Edit([Bind(Include = "TypeID,Description")] WardrobeType wardrobeType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(accessory).State = EntityState.Modified;
+                db.Entry(wardrobeType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(accessory);
+            return View(wardrobeType);
         }
 
-        // GET: Accessories/Delete/5
+        // GET: WardrobeTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accessory accessory = db.Accessories.Find(id);
-            if (accessory == null)
+            WardrobeType wardrobeType = db.WardrobeTypes.Find(id);
+            if (wardrobeType == null)
             {
                 return HttpNotFound();
             }
-            return View(accessory);
+            return View(wardrobeType);
         }
 
-        // POST: Accessories/Delete/5
+        // POST: WardrobeTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Accessory accessory = db.Accessories.Find(id);
-            db.Accessories.Remove(accessory);
+            WardrobeType wardrobeType = db.WardrobeTypes.Find(id);
+            db.WardrobeTypes.Remove(wardrobeType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WardrobeAppMVC.Models.Outfit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*<div class="row">
+    @foreach(var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4></h4>
+                    <h4></h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>*@
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WardrobeItem.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardrobeItem1.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardrobeItem2.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardrobeItem3.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardrobeItem.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardrobeItem1.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardrobeItem2.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardrobeItem3.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

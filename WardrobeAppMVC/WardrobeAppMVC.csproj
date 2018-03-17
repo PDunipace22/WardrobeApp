@@ -146,15 +146,47 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccessoriesController.cs" />
-    <Compile Include="Controllers\BottomsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OccasionsController.cs" />
     <Compile Include="Controllers\OutfitsController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
-    <Compile Include="Controllers\ShoesController.cs" />
-    <Compile Include="Controllers\TopsController.cs" />
+    <Compile Include="Controllers\WardrobeItemsController.cs" />
+    <Compile Include="Controllers\WardrobeTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Occasion.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Outfit.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Season.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardrobeItem.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardrobeModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardrobeModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardrobeModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardrobeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardrobeModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardrobeType.cs">
+      <DependentUpon>WardrobeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,9 +198,10 @@
     <Content Include="Content\images\4140-0026A.JPG" />
     <Content Include="Content\images\642039-657_x.jpg" />
     <Content Include="Content\images\asics-shoes.jpg" />
+    <Content Include="Content\images\belt.jpg" />
     <Content Include="Content\images\cloumbia-jacket.png" />
     <Content Include="Content\images\ecco-dress-shoes.jpg" />
-    <Content Include="Content\images\lee-jeans--Clothing-For-Men.jpeg" />
+    <Content Include="Content\images\lee-jeans.jpg" />
     <Content Include="Content\images\rbx shirt.jpg" />
     <Content Include="Content\images\Russel.jpg" />
     <Content Include="Content\images\timberland-boots.jpg" />
@@ -187,8 +220,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Models\WardrobeModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WardrobeModel.edmx</DependentUpon>
+      <LastGenOutput>WardrobeModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WardrobeModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WardrobeModel.edmx</DependentUpon>
+      <LastGenOutput>WardrobeModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\WardrobeModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WardrobeModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WardrobeModel.edmx.diagram">
+      <DependentUpon>WardrobeModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -218,16 +268,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Accessories\Create.cshtml" />
-    <Content Include="Views\Accessories\Delete.cshtml" />
-    <Content Include="Views\Accessories\Details.cshtml" />
-    <Content Include="Views\Accessories\Edit.cshtml" />
-    <Content Include="Views\Accessories\Index.cshtml" />
-    <Content Include="Views\Bottoms\Create.cshtml" />
-    <Content Include="Views\Bottoms\Delete.cshtml" />
-    <Content Include="Views\Bottoms\Details.cshtml" />
-    <Content Include="Views\Bottoms\Edit.cshtml" />
-    <Content Include="Views\Bottoms\Index.cshtml" />
+    <Content Include="Views\Occasions\Create.cshtml" />
+    <Content Include="Views\Occasions\Delete.cshtml" />
+    <Content Include="Views\Occasions\Details.cshtml" />
+    <Content Include="Views\Occasions\Edit.cshtml" />
+    <Content Include="Views\Occasions\Index.cshtml" />
     <Content Include="Views\Outfits\Create.cshtml" />
     <Content Include="Views\Outfits\Delete.cshtml" />
     <Content Include="Views\Outfits\Details.cshtml" />
@@ -238,20 +283,19 @@
     <Content Include="Views\Seasons\Details.cshtml" />
     <Content Include="Views\Seasons\Edit.cshtml" />
     <Content Include="Views\Seasons\Index.cshtml" />
-    <Content Include="Views\Shoes\Create.cshtml" />
-    <Content Include="Views\Shoes\Delete.cshtml" />
-    <Content Include="Views\Shoes\Details.cshtml" />
-    <Content Include="Views\Shoes\Edit.cshtml" />
-    <Content Include="Views\Shoes\Index.cshtml" />
-    <Content Include="Views\Tops\Create.cshtml" />
-    <Content Include="Views\Tops\Delete.cshtml" />
-    <Content Include="Views\Tops\Details.cshtml" />
-    <Content Include="Views\Tops\Edit.cshtml" />
-    <Content Include="Views\Tops\Index.cshtml" />
+    <Content Include="Views\WardrobeItems\Create.cshtml" />
+    <Content Include="Views\WardrobeItems\Delete.cshtml" />
+    <Content Include="Views\WardrobeItems\Details.cshtml" />
+    <Content Include="Views\WardrobeItems\Edit.cshtml" />
+    <Content Include="Views\WardrobeItems\Index.cshtml" />
+    <Content Include="Views\WardrobeTypes\Create.cshtml" />
+    <Content Include="Views\WardrobeTypes\Delete.cshtml" />
+    <Content Include="Views\WardrobeTypes\Details.cshtml" />
+    <Content Include="Views\WardrobeTypes\Edit.cshtml" />
+    <Content Include="Views\WardrobeTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

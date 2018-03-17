@@ -12,12 +12,13 @@ namespace WardrobeAppMVC.Controllers
 {
     public class OutfitsController : Controller
     {
-        private WardrobeDBEntities1 db = new WardrobeDBEntities1();
+        private WardrobeDBEntities2 db = new WardrobeDBEntities2();
 
         // GET: Outfits
         public ActionResult Index()
         {
-            var outfits = db.Outfits.Include(o => o.Accessory).Include(o => o.Bottom).Include(o => o.Season).Include(o => o.Sho).Include(o => o.Top);
+            var outfits = db.Outfits.Include(o => o.WardrobeItem).Include(o => o.WardrobeItem1).Include(o => o.WardrobeItem2).Include(o => o.WardrobeItem3);
+            //var outfits = db.Outfits.Include(o => o.TopID).Include(o => o.BottomID).Include(o => o.ShoeID).Include(o => o.AccessoryID);
             return View(outfits.ToList());
         }
 
@@ -39,11 +40,10 @@ namespace WardrobeAppMVC.Controllers
         // GET: Outfits/Create
         public ActionResult Create()
         {
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName");
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName");
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "SeasonName");
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName");
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName");
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description");
+            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description");
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description");
+            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description");
             return View();
         }
 
@@ -52,7 +52,7 @@ namespace WardrobeAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OutfitID,TopID,BottomID,ShoeID,AccessoryID,SeasonID,OutfitName")] Outfit outfit)
+        public ActionResult Create([Bind(Include = "OutfitID,Description,TopID,BottomID,ShoeID,AccessoryID")] Outfit outfit)
         {
             if (ModelState.IsValid)
             {
@@ -61,11 +61,10 @@ namespace WardrobeAppMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", outfit.BottomID);
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "SeasonName", outfit.SeasonID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 
@@ -81,11 +80,10 @@ namespace WardrobeAppMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", outfit.BottomID);
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "SeasonName", outfit.SeasonID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 
@@ -94,7 +92,7 @@ namespace WardrobeAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OutfitID,TopID,BottomID,ShoeID,AccessoryID,SeasonID,OutfitName")] Outfit outfit)
+        public ActionResult Edit([Bind(Include = "OutfitID,Description,TopID,BottomID,ShoeID,AccessoryID")] Outfit outfit)
         {
             if (ModelState.IsValid)
             {
@@ -102,11 +100,10 @@ namespace WardrobeAppMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", outfit.BottomID);
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "SeasonName", outfit.SeasonID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 

@@ -12,13 +12,12 @@ namespace WardrobeAppMVC.Controllers
 {
     public class SeasonsController : Controller
     {
-        private WardrobeDBEntities1 db = new WardrobeDBEntities1();
+        private WardrobeDBEntities2 db = new WardrobeDBEntities2();
 
         // GET: Seasons
         public ActionResult Index()
         {
-            var seasons = db.Seasons.Include(s => s.Accessory).Include(s => s.Bottom).Include(s => s.Sho).Include(s => s.Top);
-            return View(seasons.ToList());
+            return View(db.Seasons.ToList());
         }
 
         // GET: Seasons/Details/5
@@ -39,10 +38,6 @@ namespace WardrobeAppMVC.Controllers
         // GET: Seasons/Create
         public ActionResult Create()
         {
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName");
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName");
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName");
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName");
             return View();
         }
 
@@ -51,7 +46,7 @@ namespace WardrobeAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SeasonID,TopID,BottomID,ShoeID,AccessoryID,SeasonName")] Season season)
+        public ActionResult Create([Bind(Include = "SeasonID,Description")] Season season)
         {
             if (ModelState.IsValid)
             {
@@ -60,10 +55,6 @@ namespace WardrobeAppMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", season.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", season.BottomID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", season.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", season.TopID);
             return View(season);
         }
 
@@ -79,10 +70,6 @@ namespace WardrobeAppMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", season.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", season.BottomID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", season.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", season.TopID);
             return View(season);
         }
 
@@ -91,7 +78,7 @@ namespace WardrobeAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SeasonID,TopID,BottomID,ShoeID,AccessoryID,SeasonName")] Season season)
+        public ActionResult Edit([Bind(Include = "SeasonID,Description")] Season season)
         {
             if (ModelState.IsValid)
             {
@@ -99,10 +86,6 @@ namespace WardrobeAppMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AccessoryID = new SelectList(db.Accessories, "AccessoryID", "AccessoryName", season.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.Bottoms, "BottomID", "BottomName", season.BottomID);
-            ViewBag.ShoeID = new SelectList(db.Shoes, "ShoeID", "ShoeName", season.ShoeID);
-            ViewBag.TopID = new SelectList(db.Tops, "TopID", "TopName", season.TopID);
             return View(season);
         }
 
