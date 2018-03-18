@@ -12,13 +12,12 @@ namespace WardrobeAppMVC.Controllers
 {
     public class OutfitsController : Controller
     {
-        private WardrobeDBEntities2 db = new WardrobeDBEntities2();
+        private WardrobeDBEntities3 db = new WardrobeDBEntities3();
 
         // GET: Outfits
         public ActionResult Index()
         {
             var outfits = db.Outfits.Include(o => o.WardrobeItem).Include(o => o.WardrobeItem1).Include(o => o.WardrobeItem2).Include(o => o.WardrobeItem3);
-            //var outfits = db.Outfits.Include(o => o.TopID).Include(o => o.BottomID).Include(o => o.ShoeID).Include(o => o.AccessoryID);
             return View(outfits.ToList());
         }
 
@@ -40,10 +39,10 @@ namespace WardrobeAppMVC.Controllers
         // GET: Outfits/Create
         public ActionResult Create()
         {
-            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description");
-            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description");
-            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description");
-            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description");
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 6), "ItemID", "Description");
+            ViewBag.BottomID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 4), "ItemID", "Description");
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 5), "ItemID", "Description");
+            ViewBag.TopID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 3), "ItemID", "Description");
             return View();
         }
 
@@ -61,10 +60,10 @@ namespace WardrobeAppMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
-            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 6), "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 4), "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 5), "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 3), "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 
@@ -80,10 +79,10 @@ namespace WardrobeAppMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
-            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 6), "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 4), "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 5), "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 3), "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 
@@ -100,10 +99,10 @@ namespace WardrobeAppMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AccessoryID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.AccessoryID);
-            ViewBag.BottomID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.BottomID);
-            ViewBag.ShoeID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.ShoeID);
-            ViewBag.TopID = new SelectList(db.WardrobeItems, "ItemID", "Description", outfit.TopID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 6), "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.BottomID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 4), "ItemID", "Description", outfit.BottomID);
+            ViewBag.ShoeID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 5), "ItemID", "Description", outfit.ShoeID);
+            ViewBag.TopID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 3), "ItemID", "Description", outfit.TopID);
             return View(outfit);
         }
 

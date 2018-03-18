@@ -12,16 +12,9 @@
           <Property Name="OccasionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Outfits">
           <Key>
             <PropertyRef Name="OutfitID" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="TopID" />
-            <PropertyRef Name="BottomID" />
-            <PropertyRef Name="ShoeID" />
-            <PropertyRef Name="AccessoryID" />
           </Key>
           <Property Name="OutfitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -152,20 +145,11 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
         </Association>
         <EntityContainer Name="WardrobeDBModelStoreContainer">
           <EntitySet Name="Occasions" EntityType="Self.Occasions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outfits" EntityType="Self.Outfits" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seasons" EntityType="Self.Seasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WardrobeItems" EntityType="Self.WardrobeItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WardrobeType" EntityType="Self.WardrobeType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Outfits" EntityType="Self.Outfits" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Outfits].[OutfitID] AS [OutfitID], 
-    [Outfits].[Description] AS [Description], 
-    [Outfits].[TopID] AS [TopID], 
-    [Outfits].[BottomID] AS [BottomID], 
-    [Outfits].[ShoeID] AS [ShoeID], 
-    [Outfits].[AccessoryID] AS [AccessoryID]
-    FROM [dbo].[Outfits] AS [Outfits]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Outfits_WardrobeItems_Accessories" Association="Self.FK_Outfits_WardrobeItems_Accessories">
             <End Role="WardrobeItems" EntitySet="WardrobeItems" />
             <End Role="Outfits" EntitySet="Outfits" />
@@ -208,6 +192,21 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="WardrobeItems" Relationship="Self.FK_WardrobeItems_Occasions" FromRole="Occasions" ToRole="WardrobeItems" />
         </EntityType>
+        <EntityType Name="Outfit">
+          <Key>
+            <PropertyRef Name="OutfitID" />
+          </Key>
+          <Property Name="OutfitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TopID" Type="Int32" Nullable="false" />
+          <Property Name="BottomID" Type="Int32" Nullable="false" />
+          <Property Name="ShoeID" Type="Int32" Nullable="false" />
+          <Property Name="AccessoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WardrobeItem" Relationship="Self.FK_Outfits_WardrobeItems_Accessories" FromRole="Outfits" ToRole="WardrobeItems" />
+          <NavigationProperty Name="WardrobeItem1" Relationship="Self.FK_Outfits_WardrobeItems_Bottoms" FromRole="Outfits" ToRole="WardrobeItems" />
+          <NavigationProperty Name="WardrobeItem2" Relationship="Self.FK_Outfits_WardrobeItems_Shoes" FromRole="Outfits" ToRole="WardrobeItems" />
+          <NavigationProperty Name="WardrobeItem3" Relationship="Self.FK_Outfits_WardrobeItems_Tops" FromRole="Outfits" ToRole="WardrobeItems" />
+        </EntityType>
         <EntityType Name="Season">
           <Key>
             <PropertyRef Name="SeasonID" />
@@ -238,11 +237,11 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
           <Property Name="SeasonID" Type="Int32" Nullable="false" />
           <Property Name="OccasionID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Occasion" Relationship="Self.FK_WardrobeItems_Occasions" FromRole="WardrobeItems" ToRole="Occasions" />
-          <NavigationProperty Name="Season" Relationship="Self.FK_WardrobeItems_Seasons" FromRole="WardrobeItems" ToRole="Seasons" />
           <NavigationProperty Name="Outfits" Relationship="Self.FK_Outfits_WardrobeItems_Accessories" FromRole="WardrobeItems" ToRole="Outfits" />
           <NavigationProperty Name="Outfits1" Relationship="Self.FK_Outfits_WardrobeItems_Bottoms" FromRole="WardrobeItems" ToRole="Outfits" />
           <NavigationProperty Name="Outfits2" Relationship="Self.FK_Outfits_WardrobeItems_Shoes" FromRole="WardrobeItems" ToRole="Outfits" />
           <NavigationProperty Name="Outfits3" Relationship="Self.FK_Outfits_WardrobeItems_Tops" FromRole="WardrobeItems" ToRole="Outfits" />
+          <NavigationProperty Name="Season" Relationship="Self.FK_WardrobeItems_Seasons" FromRole="WardrobeItems" ToRole="Seasons" />
           <NavigationProperty Name="WardrobeType" Relationship="Self.FK_WardrobeItems_WardrobeType" FromRole="WardrobeItems" ToRole="WardrobeType" />
         </EntityType>
         <EntityType Name="WardrobeType">
@@ -253,26 +252,6 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="WardrobeItems" Relationship="Self.FK_WardrobeItems_WardrobeType" FromRole="WardrobeType" ToRole="WardrobeItems" />
         </EntityType>
-        <EntityType Name="Outfit">
-          <Key>
-            <PropertyRef Name="OutfitID" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="TopID" />
-            <PropertyRef Name="BottomID" />
-            <PropertyRef Name="ShoeID" />
-            <PropertyRef Name="AccessoryID" />
-          </Key>
-          <Property Name="OutfitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TopID" Type="Int32" Nullable="false" />
-          <Property Name="BottomID" Type="Int32" Nullable="false" />
-          <Property Name="ShoeID" Type="Int32" Nullable="false" />
-          <Property Name="AccessoryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WardrobeItem" Relationship="Self.FK_Outfits_WardrobeItems_Accessories" FromRole="Outfits" ToRole="WardrobeItems" />
-          <NavigationProperty Name="WardrobeItem1" Relationship="Self.FK_Outfits_WardrobeItems_Bottoms" FromRole="Outfits" ToRole="WardrobeItems" />
-          <NavigationProperty Name="WardrobeItem2" Relationship="Self.FK_Outfits_WardrobeItems_Shoes" FromRole="Outfits" ToRole="WardrobeItems" />
-          <NavigationProperty Name="WardrobeItem3" Relationship="Self.FK_Outfits_WardrobeItems_Tops" FromRole="Outfits" ToRole="WardrobeItems" />
-        </EntityType>
         <Association Name="FK_WardrobeItems_Occasions">
           <End Role="Occasions" Type="Self.Occasion" Multiplicity="1" />
           <End Role="WardrobeItems" Type="Self.WardrobeItem" Multiplicity="*" />
@@ -282,18 +261,6 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
             </Principal>
             <Dependent Role="WardrobeItems">
               <PropertyRef Name="OccasionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WardrobeItems_Seasons">
-          <End Role="Seasons" Type="Self.Season" Multiplicity="1" />
-          <End Role="WardrobeItems" Type="Self.WardrobeItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Seasons">
-              <PropertyRef Name="SeasonID" />
-            </Principal>
-            <Dependent Role="WardrobeItems">
-              <PropertyRef Name="SeasonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -345,6 +312,18 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WardrobeItems_Seasons">
+          <End Role="Seasons" Type="Self.Season" Multiplicity="1" />
+          <End Role="WardrobeItems" Type="Self.WardrobeItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasons">
+              <PropertyRef Name="SeasonID" />
+            </Principal>
+            <Dependent Role="WardrobeItems">
+              <PropertyRef Name="SeasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WardrobeItems_WardrobeType">
           <End Role="WardrobeType" Type="Self.WardrobeType" Multiplicity="1" />
           <End Role="WardrobeItems" Type="Self.WardrobeItem" Multiplicity="*" />
@@ -357,19 +336,15 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WardrobeDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WardrobeDBEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Occasions" EntityType="Self.Occasion" />
+          <EntitySet Name="Outfits" EntityType="Self.Outfit" />
           <EntitySet Name="Seasons" EntityType="Self.Season" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="WardrobeItems" EntityType="Self.WardrobeItem" />
           <EntitySet Name="WardrobeTypes" EntityType="Self.WardrobeType" />
-          <EntitySet Name="Outfits" EntityType="Self.Outfit" />
           <AssociationSet Name="FK_WardrobeItems_Occasions" Association="Self.FK_WardrobeItems_Occasions">
             <End Role="Occasions" EntitySet="Occasions" />
-            <End Role="WardrobeItems" EntitySet="WardrobeItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WardrobeItems_Seasons" Association="Self.FK_WardrobeItems_Seasons">
-            <End Role="Seasons" EntitySet="Seasons" />
             <End Role="WardrobeItems" EntitySet="WardrobeItems" />
           </AssociationSet>
           <AssociationSet Name="FK_Outfits_WardrobeItems_Accessories" Association="Self.FK_Outfits_WardrobeItems_Accessories">
@@ -388,6 +363,10 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
             <End Role="WardrobeItems" EntitySet="WardrobeItems" />
             <End Role="Outfits" EntitySet="Outfits" />
           </AssociationSet>
+          <AssociationSet Name="FK_WardrobeItems_Seasons" Association="Self.FK_WardrobeItems_Seasons">
+            <End Role="Seasons" EntitySet="Seasons" />
+            <End Role="WardrobeItems" EntitySet="WardrobeItems" />
+          </AssociationSet>
           <AssociationSet Name="FK_WardrobeItems_WardrobeType" Association="Self.FK_WardrobeItems_WardrobeType">
             <End Role="WardrobeType" EntitySet="WardrobeTypes" />
             <End Role="WardrobeItems" EntitySet="WardrobeItems" />
@@ -398,12 +377,24 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WardrobeDBModelStoreContainer" CdmEntityContainer="WardrobeDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="WardrobeDBModelStoreContainer" CdmEntityContainer="WardrobeDBEntities3">
           <EntitySetMapping Name="Occasions">
             <EntityTypeMapping TypeName="WardrobeDBModel.Occasion">
               <MappingFragment StoreEntitySet="Occasions">
                 <ScalarProperty Name="OccasionID" ColumnName="OccasionID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outfits">
+            <EntityTypeMapping TypeName="WardrobeDBModel.Outfit">
+              <MappingFragment StoreEntitySet="Outfits">
+                <ScalarProperty Name="OutfitID" ColumnName="OutfitID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TopID" ColumnName="TopID" />
+                <ScalarProperty Name="BottomID" ColumnName="BottomID" />
+                <ScalarProperty Name="ShoeID" ColumnName="ShoeID" />
+                <ScalarProperty Name="AccessoryID" ColumnName="AccessoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -444,18 +435,6 @@ warning 6002: The table/view 'WardrobeDB.dbo.Outfits' does not have a primary ke
               <MappingFragment StoreEntitySet="WardrobeType">
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Outfits">
-            <EntityTypeMapping TypeName="WardrobeDBModel.Outfit">
-              <MappingFragment StoreEntitySet="Outfits">
-                <ScalarProperty Name="OutfitID" ColumnName="OutfitID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="TopID" ColumnName="TopID" />
-                <ScalarProperty Name="BottomID" ColumnName="BottomID" />
-                <ScalarProperty Name="ShoeID" ColumnName="ShoeID" />
-                <ScalarProperty Name="AccessoryID" ColumnName="AccessoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

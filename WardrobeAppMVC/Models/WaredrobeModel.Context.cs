@@ -13,10 +13,10 @@ namespace WardrobeAppMVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WardrobeDBEntities2 : DbContext
+    public partial class WardrobeDBEntities3 : DbContext
     {
-        public WardrobeDBEntities2()
-            : base("name=WardrobeDBEntities2")
+        public WardrobeDBEntities3()
+            : base("name=WardrobeDBEntities3")
         {
         }
     
@@ -26,10 +26,10 @@ namespace WardrobeAppMVC.Models
         }
     
         public virtual DbSet<Occasion> Occasions { get; set; }
+        public virtual DbSet<Outfit> Outfits { get; set; }
         public virtual DbSet<Season> Seasons { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<WardrobeItem> WardrobeItems { get; set; }
         public virtual DbSet<WardrobeType> WardrobeTypes { get; set; }
-        public virtual DbSet<Outfit> Outfits { get; set; }
     }
 }

@@ -11,23 +11,17 @@ namespace WardrobeAppMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Outfit
     {
         public int OutfitID { get; set; }
-        [Display(Name ="Description")]
         public string Description { get; set; }
-        [Display(Name ="Top")]
         public int TopID { get; set; }
-        [Display(Name ="Bottom")]
         public int BottomID { get; set; }
-        [Display(Name ="Shoes")]
         public int ShoeID { get; set; }
-        [Display(Name ="Accessory")]
         public int AccessoryID { get; set; }
-
-        public virtual WardrobeItem WardrobeItem { get; set ; }
+    
+        public virtual WardrobeItem WardrobeItem { get; set; }
         public virtual WardrobeItem WardrobeItem1 { get; set; }
         public virtual WardrobeItem WardrobeItem2 { get; set; }
         public virtual WardrobeItem WardrobeItem3 { get; set; }

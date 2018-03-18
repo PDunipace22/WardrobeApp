@@ -11,8 +11,7 @@ namespace WardrobeAppMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class WardrobeItem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,7 +32,6 @@ namespace WardrobeAppMVC.Models
         public int OccasionID { get; set; }
     
         public virtual Occasion Occasion { get; set; }
-        public virtual Season Season { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Outfit> Outfits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,6 +40,7 @@ namespace WardrobeAppMVC.Models
         public virtual ICollection<Outfit> Outfits2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Outfit> Outfits3 { get; set; }
+        public virtual Season Season { get; set; }
         public virtual WardrobeType WardrobeType { get; set; }
     }
 }

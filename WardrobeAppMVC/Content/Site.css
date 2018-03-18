@@ -8,6 +8,53 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 35px;
+}
+#jumbotron1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#jumbotron2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#grad {
+    background: linear-gradient(to bottom right, red, orange,green);
+}
+#grad1 {
+    background: linear-gradient(to bottom right, blue, yellow);
+}
+#grad2 {
+    background: linear-gradient(to bottom right, blue, yellow);
+}
+p{
+    font-size:35px;
+}
+#footer{
+    font-size:15px;
+}
+.create{
+    font-size:20px;
+}
+h1{
+    font-size:45px;
+}
+button{
+    font-size:14px;
+}
+btn{
+    font-size: 14px;
+}
+}
+table {
+    text-align: center;
+}
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

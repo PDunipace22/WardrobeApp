@@ -12,7 +12,7 @@ namespace WardrobeAppMVC.Controllers
 {
     public class WardrobeItemsController : Controller
     {
-        private WardrobeDBEntities2 db = new WardrobeDBEntities2();
+        private WardrobeDBEntities3 db = new WardrobeDBEntities3();
 
         // GET: WardrobeItems
         public ActionResult Index()

@@ -9,41 +9,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-@*<div class="row">
-    @foreach(var item in Model)
-    {
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4></h4>
-                    <h4></h4>
-                </div>
-            </div>
-        </div>
-    }
-</div>*@
-
-
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WardrobeItem.Description)
+            @*@Html.DisplayNameFor(model => model.Description)*@
+            Outfit Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WardrobeItem1.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem.Description)*@
+            Top
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WardrobeItem2.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem1.Description)*@
+            Bottom
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WardrobeItem3.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem2.Description)*@
+            Shoes
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.WardrobeItem3.Description)*@
+            Accessory
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.WardrobeItem.Description)
         </td>
@@ -57,9 +52,9 @@
             @Html.DisplayFor(modelItem => item.WardrobeItem3.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.OutfitID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OutfitID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OutfitID })
         </td>
     </tr>
 }
