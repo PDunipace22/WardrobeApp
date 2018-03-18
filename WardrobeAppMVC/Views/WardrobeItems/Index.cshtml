@@ -6,10 +6,29 @@
 
 <h2>Index</h2>
 
-<p>
+<p class="create">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h2>@Html.DisplayFor(modelItem => item.Description)</h2>
+                    <img src="@Html.DisplayFor(modelItem => item.Photo)" />
+                    <p></p>
+                    <button>@Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) </button>
+                    <button>@Html.ActionLink("Details", "Details", new { id = item.ItemID }) </button>
+                    <button>@Html.ActionLink("Delete", "Delete", new { id = item.ItemID })</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -60,4 +79,4 @@
     </tr>
 }
 
-</table>
+</table>*@

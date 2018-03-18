@@ -60,7 +60,7 @@ namespace WardrobeAppMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 6), "ItemID", "Description", outfit.AccessoryID);
+            ViewBag.AccessoryID = new SelectList(db.WardrobeItems.Where/*(TypeID.Description == "Top"*/(p => p.TypeID == 6), "ItemID", "Description", outfit.AccessoryID);
             ViewBag.BottomID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 4), "ItemID", "Description", outfit.BottomID);
             ViewBag.ShoeID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 5), "ItemID", "Description", outfit.ShoeID);
             ViewBag.TopID = new SelectList(db.WardrobeItems.Where(p => p.TypeID == 3), "ItemID", "Description", outfit.TopID);

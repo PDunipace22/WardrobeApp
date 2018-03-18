@@ -11,7 +11,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @*@Html.DisplayNameFor(model => model.Description)*@
+            Outfit Name
         </dt>
 
         <dd>
@@ -19,15 +20,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WardrobeItem.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem3.Description)*@
+            Top
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WardrobeItem.Description)
+            @Html.DisplayFor(model => model.WardrobeItem3.Description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WardrobeItem1.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem1.Description)*@
+            Bottom
         </dt>
 
         <dd>
@@ -35,7 +38,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WardrobeItem2.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem2.Description)*@
+            Shoes
         </dt>
 
         <dd>
@@ -43,16 +47,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WardrobeItem3.Description)
+            @*@Html.DisplayNameFor(model => model.WardrobeItem.Description)*@
+            Accessory
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WardrobeItem3.Description)
+            @Html.DisplayFor(model => model.WardrobeItem.Description)
         </dd>
 
     </dl>
 </div>
+
+<dd>
+    <img src="@Html.DisplayFor(model => model.WardrobeItem3.Photo)" />
+</dd>
+<dd>
+    <img src="@Html.DisplayFor(model => model.WardrobeItem1.Photo)" />
+
+</dd>
+<dd>
+    <img src="@Html.DisplayFor(model => model.WardrobeItem2.Photo)"/>
+</dd>
+<dd>
+    <img src="@Html.DisplayFor(model => model.WardrobeItem.Photo)" />
+</dd>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OutfitID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.OutfitID })</button> 
+    <button>@Html.ActionLink("Back to List", "Index")</button>
 </p>
