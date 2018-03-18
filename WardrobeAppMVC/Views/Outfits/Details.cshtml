@@ -58,19 +58,14 @@
     </dl>
 </div>
 
-<dd>
-    <img src="@Html.DisplayFor(model => model.WardrobeItem3.Photo)" />
-</dd>
-<dd>
-    <img src="@Html.DisplayFor(model => model.WardrobeItem1.Photo)" />
-
-</dd>
-<dd>
-    <img src="@Html.DisplayFor(model => model.WardrobeItem2.Photo)"/>
-</dd>
-<dd>
-    <img src="@Html.DisplayFor(model => model.WardrobeItem.Photo)" />
-</dd>
+<table>
+    <tr>
+        <td><img src="@Html.DisplayFor(model => model.WardrobeItem3.Photo)" /></td>
+        <td><img src="@Html.DisplayFor(model => model.WardrobeItem1.Photo)" /></td>
+        <td><img src="@Html.DisplayFor(model => model.WardrobeItem2.Photo)" /></td>
+        <td><img src="@Html.DisplayFor(model => model.WardrobeItem.Photo)" /></td>
+    </tr>
+</table>
 <p>
     <button>@Html.ActionLink("Edit", "Edit", new { id = Model.OutfitID })</button> 
     <button>@Html.ActionLink("Back to List", "Index")</button>
