@@ -21,12 +21,6 @@ namespace WardrobeAppMVC.Controllers
             return View(wardrobeItems.ToList());
         }
 
-        public ActionResult Tops()
-        {
-            var wardrobeItems = db.WardrobeItems.Where(p => p.WardrobeType.Description == "Top").Include(w => w.Occasion).Include(w => w.Season).Include(w => w.WardrobeType);
-            return View(wardrobeItems.ToList()); 
-        }
-
         // GET: WardrobeItems/Details/5
         public ActionResult Details(int? id)
         {
